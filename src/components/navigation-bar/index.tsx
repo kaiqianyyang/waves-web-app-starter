@@ -25,6 +25,7 @@ function NavigationBar() {
   if (loading) {
     return <div className={styles['navigation-placeholder']} />;
   }
+  console.log(data)
   return (
     <div className='bg-base-800 text-base-100 py-3 px-2 fixed t-0 l-0 r-0 z-15'>
       <Container>

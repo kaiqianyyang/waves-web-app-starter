@@ -15,7 +15,7 @@ root.render(
   <React.StrictMode>
     <ApolloProvider client={client}>
       <BrowserRouter>
-        <AppProvider authorName='Intern'>
+        <AppProvider authorName='Cathy'>
           <AuthProvider>
             <App />
           </AuthProvider>

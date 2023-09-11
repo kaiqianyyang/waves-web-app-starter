@@ -12,6 +12,8 @@
   --spacing-3: 1.5rem;
   --spacing-4: 2rem;
   --spacing-5: 2.5rem;
+  --spacing-6: 3rem;
+  --spacing-7: 3.5rem;
 
   /* colors */
   --colors-base-100: #ffffff;
@@ -34,6 +36,9 @@
   --font-size-5: 1.5rem;
   --font-size-6: 1.75rem;
   --font-size-7: 2rem;
+  --font-size-8: 2.25rem;
+  --font-size-9: 2.5rem;
+  --font-size-10: 2.75rem;
 
   /* font weights */
   --font-weight-100: 100;

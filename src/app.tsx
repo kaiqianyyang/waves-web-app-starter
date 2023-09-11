@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import { Paths } from './constants';
 import { MainLayout } from './layouts';
-import { HomePage, NotFoundPage, ProfilePage } from './pages';
+import { HomePage, NotFoundPage, ProfilePage, LoginPage } from './pages';
 
 import './styles.css';
 
@@ -14,6 +14,7 @@ export default function App() {
         <Route path={Paths.Home} element={<HomePage />} />
         <Route path={Paths.Profile} element={<ProfilePage />} />
         <Route path={Paths.CatchAll} element={<NotFoundPage />} />
+        <Route path={Paths.Login} element={<LoginPage />} />
       </Route>
     </Routes>
   );
