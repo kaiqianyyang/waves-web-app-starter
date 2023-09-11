@@ -1,5 +1,5 @@
 import { IProfile } from '../../../types';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useSuspenseQuery } from '@apollo/client';
 import { GET_PROFILE } from '../../../lib';
 import { Fragment } from 'react';
@@ -12,9 +12,12 @@ import {
   TabsTrigger,
 } from '../../../components';
 import Posts from './posts';
+import { useLogout } from '../../login/hooks';
 
 function Content() {
   const params = useParams();
+  const { logOut } = useLogout();
+  const navigate = useNavigate();
 
   const { data } = useSuspenseQuery<
     {
@@ -22,6 +25,11 @@ function Content() {
     },
     { id: number }
   >(GET_PROFILE, { variables: { id: parseInt(params.id || '-1') } });
+
+  const handleLogout = () => {
+    logOut();
+    navigate('/');
+  };
 
   return (
     <Fragment>
@@ -42,7 +50,7 @@ function Content() {
                   @{data.profile.username}
                 </span>
               </div>
-              <Button>Logout</Button>
+              <Button handleClick={handleLogout}>Logout</Button>
             </div>
           </div>
           <Tabs defaultValue='posts'>

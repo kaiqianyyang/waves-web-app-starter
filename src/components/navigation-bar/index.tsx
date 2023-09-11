@@ -5,6 +5,7 @@ import { useQuery } from '@apollo/client';
 import { IProfile } from '../../types';
 import { GET_PROFILE } from '../../lib';
 import { useAuthContext } from '../../hooks';
+import { CgProfile } from 'react-icons/cg';
 
 import styles from './styles.module.css';
 
@@ -18,14 +19,14 @@ function NavigationBar() {
     { id: number }
   >(GET_PROFILE, { variables: { id: user ? user.id : -1 } });
 
-  if (error) {
-    return <div className='error'>{error.message}</div>;
-  }
+  // if (error) {
+  //   return <div className='error'>{error.message}</div>;
+  // }
 
   if (loading) {
     return <div className={styles['navigation-placeholder']} />;
   }
-  console.log(data);
+
   return (
     <div className='bg-base-800 text-base-100 py-3 px-2 fixed t-0 l-0 r-0 z-15'>
       <Container>
@@ -33,17 +34,24 @@ function NavigationBar() {
           <Link className='text-decoration-none' to={Paths.Root}>
             <span className='font-weight-700 font-size-4'>Waves</span>
           </Link>
+          {/* <Link to={`/login`}>
+                <CgProfile className='font-size-7 pt-1' />
+              </Link> */}
           <div className='h-stack align-items-center gap-3'>
             <Link to='/cart'>
               <span>cart (0)</span>
             </Link>
-            {data && (
+            {!error ? data && (
               <Link to={`/profile/${data.profile.id}`}>
                 <Avatar
                   size='sm'
                   src={data.profile.image}
                   name={data.profile.username}
                 />
+              </Link>
+            ) : (
+              <Link to={`/login`}>
+                <CgProfile className='font-size-7 pt-1' />
               </Link>
             )}
           </div>

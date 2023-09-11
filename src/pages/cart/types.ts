@@ -1,12 +1,3 @@
-// import { IPost, PaginationParams } from '../../types';
+import { IUserItem, ReturnManyQueryModel } from '../../types';
 
-// export interface GetPostsQueryModel {
-//   total: number;
-//   limit: number;
-//   skip: number;
-//   items: IPost[];
-// }
-
-// export interface UserPostsVariables extends PaginationParams {
-//   id: number;
-// }
+export type GetItemQueryModel = ReturnManyQueryModel<IUserItem>;

@@ -3,20 +3,25 @@ import { useSuspenseQuery } from '@apollo/client';
 import { GET_PRODUCTS } from '../../../lib';
 import { FormEvent, Fragment, useState } from 'react';
 import { Grid, ProductCard } from '../../../components';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '../../../components';
 import { Paths } from '../../../constants.ts';
 import waves from '../../../assets/banner.gif';
+import { useLogin } from '../hooks/use-login.ts';
+import { useAuthContext } from '../../../hooks/use-auth-context.ts';
 
 function Content() {
+  const { setUser } = useAuthContext();
+  const { logIn } = useLogin();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log(username, password);
-    setUsername('');
-    setPassword('');
+    logIn(username, password);
+    navigate('/');
   };
 
   return (

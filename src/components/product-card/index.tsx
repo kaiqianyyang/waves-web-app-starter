@@ -21,8 +21,6 @@ function ProductCard({ data }: ProductCardProps) {
 
   const resetImageSrc = () => setImageSrc(data.thumbnail);
 
-  console.log(data);
-
   return (
     <div
       onMouseEnter={showImages}

@@ -5,4 +5,5 @@ export interface ButtonProps extends GenericProps {
   color?: 'primary';
   size?: 'sm' | 'base' | 'lg';
   classNames?: '';
+  handleClick?: VoidFunction;
 }

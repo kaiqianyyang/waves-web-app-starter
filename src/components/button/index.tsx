@@ -1,6 +1,7 @@
 import { ButtonProps } from './types';
 import { mergeStyles } from '../../utilities';
 import { StylesButtonVariants, StylesButtonSizes } from './styles';
+import { MouseEventHandler } from 'react';
 
 function Button({
   children,
@@ -8,6 +9,7 @@ function Button({
   variant = 'solid',
   color = 'primary',
   classNames = '',
+  handleClick, // Add onClick prop
 }: ButtonProps) {
   return (
     <button
@@ -17,6 +19,7 @@ function Button({
         StylesButtonVariants[variant].Colors[color],
         classNames,
       ])}
+      onClick={handleClick}
     >
       {children}
     </button>
