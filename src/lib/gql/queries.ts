@@ -52,3 +52,21 @@ export const GET_PROFILE = gql`
     }
   }
 `;
+
+export const GET_PRODUCT = gql`
+  query product($id: Int!) {
+    product(id: $id){
+      brand
+      category
+      description
+      discountPercentage
+      id
+      images
+      price
+      rating
+      stock
+      thumbnail
+      title
+    }
+  }
+`;

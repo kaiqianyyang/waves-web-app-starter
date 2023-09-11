@@ -16,6 +16,7 @@ export function useSwitch(
 ] {
   const [state, setState] = useState<boolean>(defaultValue);
 
+  // const turnOff = () => setState(false);
   const turnOff = () => setState(false);
   const turnOn = () => setState(true);
   const toggle = () => setState((prev) => !prev);

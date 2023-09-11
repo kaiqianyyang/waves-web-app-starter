@@ -1,6 +1,8 @@
 // Export all components here.
 export { default as PostCard } from './post-card';
 export { default as ProductCard } from './product-card';
+export { default as ProductSlide } from './product/ProductSlide';
+export { default as ProductInfo } from './product/ProductInfo';
 export { default as NavigationBar } from './navigation-bar';
 export { default as Footer } from './footer';
 export { default as Grid } from './grid';
