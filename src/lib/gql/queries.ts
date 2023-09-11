@@ -55,7 +55,7 @@ export const GET_PROFILE = gql`
 
 export const GET_PRODUCT = gql`
   query product($id: Int!) {
-    product(id: $id){
+    product(id: $id) {
       brand
       category
       description
