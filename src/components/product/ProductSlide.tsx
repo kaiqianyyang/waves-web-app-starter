@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { useSwitch } from '../../hooks';
-import { calculateDiscountedPrice, mergeStyles } from '../../utilities';
 import { ProductCardProps } from './types';
 import styles from './styles.module.css';
 

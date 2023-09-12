@@ -97,7 +97,7 @@ function CartPanel({ subtotal, tax, total }: ISummary) {
             className='solid'
             style={{ borderTop: '1px solid #dddddd' }}
           ></hr>
-          <Button color={'secondary'} onClick={handlePay}>
+          <Button color={'secondary'} handleClick={handlePay}>
             Pay Now
           </Button>
         </div>

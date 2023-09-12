@@ -1,7 +1,7 @@
 import { createContext, useEffect, useState } from 'react';
 import { IAuthContext } from './types';
 import { IMe, GenericProps } from '../../types';
-import { generateIntMaxedAt, voidFunction } from '../../utilities';
+import { voidFunction } from '../../utilities';
 import { useQuery } from '@apollo/client';
 import { GET_ME } from '../../lib';
 import { LoadingFallback } from '../../components';

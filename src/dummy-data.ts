@@ -40,6 +40,7 @@ export const testProduct: IProduct = {
     'https://i.dummyjson.com/data/products/1/4.jpg',
     'https://i.dummyjson.com/data/products/1/thumbnail.jpg',
   ],
+  quantity: 2
 };
 
 export const testCart = {

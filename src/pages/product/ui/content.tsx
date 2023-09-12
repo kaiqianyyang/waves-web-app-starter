@@ -1,4 +1,4 @@
-import { IProduct, PaginationParams } from '../../../types';
+import { IProduct } from '../../../types';
 import { useSuspenseQuery } from '@apollo/client';
 import { GET_PRODUCT } from '../../../lib';
 import { Fragment } from 'react';

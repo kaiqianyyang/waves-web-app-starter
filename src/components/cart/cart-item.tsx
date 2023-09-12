@@ -6,12 +6,8 @@ import { Button } from '..';
 
 function CartItem({
   thumbnail,
-  rating,
-  stock,
   brand,
-  images,
   title,
-  description,
   price,
   discountPercentage,
   category,

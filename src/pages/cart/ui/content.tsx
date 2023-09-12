@@ -14,7 +14,7 @@ function Content() {
   let products: any[] = [];
   let summary = null;
 
-  const { loading, error, data } = useQuery<
+  const { loading, error } = useQuery<
     {
       profile: IProfile;
     },
