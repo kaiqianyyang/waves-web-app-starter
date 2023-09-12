@@ -1,37 +1,108 @@
 import styles from './styles.module.css';
-import { PostCardProps } from './types.ts';
-import Avatar from '../avatar';
-import { Key, ReactElement, JSXElementConstructor, ReactNode } from 'react';
+import { Fragment } from 'react';
+import { IProduct } from '../../types';
+import { calculateDiscountedPrice, mergeStyles } from '../../utilities';
+import { Button } from '..';
 
-function CartItem({ data, owner }) {
+function CartItem({
+  thumbnail,
+  rating,
+  stock,
+  brand,
+  images,
+  title,
+  description,
+  price,
+  discountPercentage,
+  category,
+  quantity,
+}: IProduct) {
+  // const [imageSrc, setImageSrc] = useState(data.thumbnail);
+
+  // const resetImageSrc = () => setImageSrc(data.thumbnail);
+  console.log(
+    'item: ' +
+      JSON.stringify({
+        thumbnail,
+        rating,
+        stock,
+        brand,
+        images,
+        title,
+        description,
+        price,
+        discountPercentage,
+        category,
+      }),
+  );
+
   return (
-    <div className={styles['post-card']}>
-      <div className={styles['post-card--header']}>
-        <div className={styles['post-card--profile']}>
-          <Avatar src={owner.image} name={owner.firstName} />
-          <div className={styles['post-card--profile-names']}>
-            <span className='font-weight-600'>{owner.firstName}</span>
-            <span className='font-size-2 text-base-400'>
-              @{owner.username}
-            </span>
+    <Fragment>
+      <div>
+        <div className='h-stack gap-2 m-3'>
+          <div className='v-stack gap-1 justify-content-center'>
+            <img
+              className=''
+              style={{ width: '250px', aspectRatio: '1/1' }}
+              src={thumbnail}
+              alt='waves gif'
+            />
+          </div>
+          <div className='v-stack w-100 mx-3'>
+            <div className='h-stack w-100 gap-2'>
+              <div className='v-stack w-100'>
+                <h2 className='mb-2'>{title}</h2>
+                <div
+                  className={mergeStyles([
+                    styles['cart-item-info'],
+                    'font-weight-500',
+                  ])}
+                >
+                  {brand}
+                </div>
+                <div
+                  className={mergeStyles([
+                    styles['cart-item-info'],
+                    'font-weight-500',
+                  ])}
+                >
+                  {category}
+                </div>
+                <div
+                  className={mergeStyles([
+                    styles['cart-item-info'],
+                    'font-weight-500',
+                    'my-3',
+                  ])}
+                >
+                  Quantity: {quantity}
+                </div>
+              </div>
+              <div
+                className={mergeStyles([
+                  styles['product-card-price'],
+                  'h-stack',
+                  'gap-2',
+                  'justify-content-end',
+                ])}
+              >
+                <span>
+                  ${calculateDiscountedPrice(price, discountPercentage)}
+                </span>
+                <s className='text-stroke text-base-400'>${price}</s>
+              </div>
+            </div>
+
+            {/* Divider */}
+            <hr
+              className='solid my-3'
+              style={{ borderTop: '1px solid #dddddd' }}
+            ></hr>
+            <Button>Remove</Button>
           </div>
         </div>
-        <div className={styles['post-card--tags']}>
-          {data.tags.map((tag: boolean | Key | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | null | undefined) => (
-            <span key={tag}>#{tag}</span>
-          ))}
-        </div>
       </div>
-      <div className={styles['post-card--body']}>
-        <span>{data.title}</span>
-        <span>{data.body}</span>
-      </div>
-      <div className={styles['post-card--footer']}>
-        <p className={styles['post-card--reactions']}>
-          <span>{data.reactions}</span> <span>reactions</span>
-        </p>
-      </div>
-    </div>
+    </Fragment>
   );
 }
 CartItem.displayName = 'Cart Item';

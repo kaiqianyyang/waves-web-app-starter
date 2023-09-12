@@ -1,13 +1,24 @@
-/**
- * Implement the post card props interface as you
- * see fit.
- *
- * Source: https://dummyjson.com/posts
- * */
-import { IPost, IProfile } from '../../types';
+import { GetProductQueryModel } from '../../pages/home/types';
+import { ISummary, ReturnManyQueryModel } from '../../types';
 
-export interface PostCardProps {
-  /** Your code */
-  data: IPost;
-  owner: IProfile;
+export type GetItemQueryModel = ReturnManyQueryModel<ItemProps>;
+
+export interface CartProps {
+  products: CartProductsProps;
+  summary: ISummary;
+}
+
+export interface CartProductsProps {
+  items: GetItemQueryModel;
+  total: number;
+}
+
+export interface ItemProps {
+  id: number;
+  items: GetProductQueryModel;
+  total: number;
+  discountedTotal: number;
+  userId: number;
+  totalProducts: number;
+  totalQuantity: number;
 }

@@ -1,47 +1,38 @@
-import { createContext, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 import { IAuthContext } from './types';
 import { IMe, GenericProps } from '../../types';
 import { generateIntMaxedAt, voidFunction } from '../../utilities';
-import jwtDecode from 'jwt-decode';
-
-// const initialState = {
-//   user: null
-// }
-
-// if (window.localStorage.getItem("access-token") !== null) {
-//   const decodedToken = jwtDecode(window.localStorage.getItem("access-token")) as IMe;
-//   initialState.user = decodedToken;
-// }
+import { useQuery } from '@apollo/client';
+import { GET_ME } from '../../lib';
+import { LoadingFallback } from '../../components';
 
 const AuthContext = createContext<IAuthContext>({
   user: null,
   setUser: voidFunction,
-  logOut: voidFunction,
+  logout: voidFunction,
 });
 
 function AuthProvider({ children }: GenericProps) {
-  // const [user, setUser] = useState<IMe | null>({
-  //   id: generateIntMaxedAt(20),
-  // });
-  const [user, setUser] = useState<IMe | null>(() => {
-    // Initialize user state with a user from local storage if available
-    const accessToken = window.localStorage.getItem('access-token');
-    if (accessToken) {
-      const decodedToken = jwtDecode(accessToken) as IMe;
-      return decodedToken;
-    }
-    return null;
-  });
+  const { loading, data } = useQuery<{ me: IMe }>(GET_ME);
 
-  // const [user, setUser] = useState<IMe | null>(null);
-
-  const logOut = () => {
+  const [user, setUser] = useState<IMe | null>(data ? data.me : null);
+  const logout = () => {
     setUser(null);
-    window.localStorage.removeItem('access-token');
   };
 
+  useEffect(() => {
+    if (data) {
+      console.log('data.me' + data.me);
+      setUser(data.me);
+    }
+  }, [data]);
+
+  if (loading) {
+    return <LoadingFallback />;
+  }
+
   return (
-    <AuthContext.Provider value={{ user, setUser, logOut }}>
+    <AuthContext.Provider value={{ user, setUser, logout }}>
       {children}
     </AuthContext.Provider>
   );

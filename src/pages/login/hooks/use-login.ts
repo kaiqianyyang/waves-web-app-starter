@@ -1,9 +1,6 @@
 import { useMutation } from '@apollo/client';
 import { LOGIN } from '../../../lib';
 import { LoginInput } from '../types.ts';
-import { useAuthContext } from '../../../hooks/index.ts';
-import jwt_decode from 'jwt-decode';
-import { IProfile } from '../../../types/profile.ts';
 
 /**
  * This hook is used to log in to a user's account.
@@ -20,8 +17,6 @@ import { IProfile } from '../../../types/profile.ts';
  *
  */
 export function useLogin() {
-  const { setUser } = useAuthContext();
-
   const [mutation, { loading, error }] = useMutation<
     { login: string },
     { payload: LoginInput }
@@ -43,8 +38,6 @@ export function useLogin() {
     if (result.data) {
       // store the access_token to local storage
       window.localStorage.setItem('access_token', result.data.login);
-      const decodedStr = jwt_decode(result.data.login) as IProfile;
-      setUser({ id: decodedStr.id });
       return true;
     } else {
       return false;

@@ -1,13 +1,12 @@
 import { ButtonProps } from './types';
 import { mergeStyles } from '../../utilities';
 import { StylesButtonVariants, StylesButtonSizes } from './styles';
-import { MouseEventHandler } from 'react';
 
 function Button({
   children,
   size = 'base',
   variant = 'solid',
-  color = 'primary',
+  color = 'primary' || 'secondary',
   classNames = '',
   handleClick, // Add onClick prop
 }: ButtonProps) {

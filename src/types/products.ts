@@ -11,4 +11,5 @@ export interface IProduct extends GenericItem {
   price: number;
   discountPercentage: number;
   category: string;
+  quantity: number;
 }

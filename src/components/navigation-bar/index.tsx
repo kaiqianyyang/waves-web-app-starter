@@ -17,11 +17,11 @@ function NavigationBar() {
       profile: IProfile;
     },
     { id: number }
-  >(GET_PROFILE, { variables: { id: user ? user.id : -1 } });
+  >(GET_PROFILE, { variables: { id: user ? user.id : 10 } }); // -1
 
-  // if (error) {
-  //   return <div className='error'>{error.message}</div>;
-  // }
+  if (error) {
+    return <div className='error'>{error.message}</div>;
+  }
 
   if (loading) {
     return <div className={styles['navigation-placeholder']} />;
@@ -34,21 +34,20 @@ function NavigationBar() {
           <Link className='text-decoration-none' to={Paths.Root}>
             <span className='font-weight-700 font-size-4'>Waves</span>
           </Link>
-          {/* <Link to={`/login`}>
-                <CgProfile className='font-size-7 pt-1' />
-              </Link> */}
           <div className='h-stack align-items-center gap-3'>
             <Link to='/cart'>
               <span>cart (0)</span>
             </Link>
-            {!error ? data && (
-              <Link to={`/profile/${data.profile.id}`}>
-                <Avatar
-                  size='sm'
-                  src={data.profile.image}
-                  name={data.profile.username}
-                />
-              </Link>
+            {user ? (
+              data && (
+                <Link to={`/profile/${data.profile.id}`}>
+                  <Avatar
+                    size='sm'
+                    src={data.profile.image}
+                    name={data.profile.username}
+                  />
+                </Link>
+              )
             ) : (
               <Link to={`/login`}>
                 <CgProfile className='font-size-7 pt-1' />
