@@ -15,9 +15,6 @@ function Content() {
     { id: number }
   >(GET_PRODUCT, { variables: { id: parseInt(params.id || '-1') } });
 
-  console.log('data');
-  console.log(data);
-
   return (
     <Fragment>
       <div className='v-stack gap-2 mr-3 mt-7'>

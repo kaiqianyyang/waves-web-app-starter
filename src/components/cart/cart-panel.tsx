@@ -5,7 +5,6 @@ import { mergeStyles } from '../../utilities';
 import { Button } from '..';
 
 function CartPanel({ subtotal, tax, total }: ISummary) {
-  console.log('item: ' + JSON.stringify({ subtotal, tax, total }));
 
   const handlePay = () => {};
 

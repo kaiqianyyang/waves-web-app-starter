@@ -17,24 +17,6 @@ function CartItem({
   category,
   quantity,
 }: IProduct) {
-  // const [imageSrc, setImageSrc] = useState(data.thumbnail);
-
-  // const resetImageSrc = () => setImageSrc(data.thumbnail);
-  console.log(
-    'item: ' +
-      JSON.stringify({
-        thumbnail,
-        rating,
-        stock,
-        brand,
-        images,
-        title,
-        description,
-        price,
-        discountPercentage,
-        category,
-      }),
-  );
 
   return (
     <Fragment>

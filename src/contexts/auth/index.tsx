@@ -22,7 +22,6 @@ function AuthProvider({ children }: GenericProps) {
 
   useEffect(() => {
     if (data) {
-      console.log('data.me' + data.me);
       setUser(data.me);
     }
   }, [data]);

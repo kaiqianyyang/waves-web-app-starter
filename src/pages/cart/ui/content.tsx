@@ -29,7 +29,6 @@ function Content() {
     return <div className={styles['navigation-placeholder']} />;
   }
 
-  console.log('CARTTTT');
   testCart.products.items.forEach((item) => {
     if (item.userId === 30) {
       products = item.products;

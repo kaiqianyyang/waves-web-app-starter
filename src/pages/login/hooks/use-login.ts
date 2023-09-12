@@ -32,8 +32,6 @@ export function useLogin() {
       },
     });
 
-    console.log(result);
-
     // we are storing the access token in local storage
     if (result.data) {
       // store the access_token to local storage
